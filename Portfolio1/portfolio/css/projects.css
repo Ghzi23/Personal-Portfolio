@@ -1,0 +1,290 @@
+/*Project Page*/
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Navagation Bar    http://127.0.0.1:5500/portfolio/index.html  */
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    min-height: 8vh;
+    box-shadow: 0 0 3px black;
+    background-color: #2b7a78;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+.maaz{
+    color: white;
+    letter-spacing: 1px;
+    font-size: large;
+}
+
+.nav_links{
+    display: flex;
+    justify-content: space-around;
+    width: 45%;
+}
+.nav_links li{
+    list-style: none;
+}
+
+.nav_links a{
+    color:white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .1s ;
+}
+
+.nav_links a:hover {
+color: #17252a;
+}
+
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color:white;
+    margin: 3px;
+}
+
+
+/*For Ipadish Screen Adjustment*/ 
+@media screen and (max-width: 1024px){
+    .nav_links{
+        width: 50%;
+}
+}
+
+
+/*For phone Screen Adjustment*/ 
+@media screen and (max-width: 768px){
+    header{
+        overflow: hidden;
+    }
+    .nav_links{
+        /* added by janik 6:02 8/16/2022 */
+		/* display: none !important;  */
+        position: absolute;
+         right: 0px;
+         height: 92vh;
+         top: 8vh;
+         background-color: #2b7a78;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 30%;
+         transform: translate(100%);
+         transition: transform 0.5s ease-in;
+         z-index: 2;
+}
+    .nav_links li{
+        opacity: 0;
+    }
+
+    .burger{
+        display: block;
+    }
+    
+}
+
+.nav-active{
+    transform: translate(0%);
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translate(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+/*Page Itself*/
+body{
+    background-color: #f6f6f2
+}
+
+input{
+    display: none;
+}
+
+.container{
+    width: 800px; 
+    text-align: left;
+    margin-left: 65px;
+}
+
+h1 {
+    font-size:75px;
+    font-weight: 600;
+    position: relative;
+    margin-top: 50px;
+    margin-left: 30px;
+    align-items: left;
+    color: #17252a;
+}
+p{
+    font-weight: normal;
+    position: relative;
+    margin: 20px;
+    font-size: 20px;
+    margin-left: 30px;
+    align-items: left;
+    color: #17252a;
+
+}
+/* Red line Animation*/
+h1::before{
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 3px;
+    background-color: crimson;
+    bottom: -10px;
+    left: 155px;
+    transform: translate(-50%);
+    animation: animate 3s linear infinite;
+}
+@keyframes animate{
+    0%{
+        width: 100px;
+    }
+    50%{
+        width: 200px;
+    }
+    100%{
+        width: 100px;
+    }
+}
+.top-content{
+    background-color: rgb(243,243,243);
+    width: 90%;
+    margin: 10px;
+    margin-left: 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px lightgray;
+}
+h3{
+    height: 100%;
+    background-color: lightgray;
+    line-height: 60px;
+    padding: 0 50px;
+    color: white;
+}
+label{
+    display: inline-block;
+    height: 100%;
+    margin: 0 20px;
+    line-height: 60px;
+    font-size: 18px;
+    color: gray;
+    cursor: pointer;
+    transition: color .5s;
+}
+
+label:hover{
+    color: #17252a;
+}
+
+.photo-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    flex-direction: row;
+    max-width: 1440px;
+}
+.pic{
+    position: relative;
+    width: 300px;
+    height: 250px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 5px lightgray;
+    cursor: pointer;
+    border: 8px solid #17252a;
+    margin: 25px;
+    overflow: hidden;
+}
+.pic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: .5s;
+}
+.pic::before{
+    content: 'Loading';
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: -100px;
+    opacity: 0;
+    transition: .3s;
+    transition-delay: .2s;
+}
+
+.pic:after{
+    content: "";
+    position: absolute;
+    width:100%;
+    bottom: 0;
+    left: 0;
+    border-radius: 0px;
+    height: 0;
+    background-color: rgb(0,0,0,.4);
+    transition: .3s;
+}
+
+.pic:hover::after{
+    height: 100%;
+}
+.pic:hover::before{
+    margin-top: 0;
+    opacity: 1;
+}
+
+/*This area for the filter button*/
+
+/*15:28 for knoledge on how to chage the filter button*/
+#check1:checked ~ .container .photo-gallery .pic{
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+
+#check2:checked ~ .container .photo-gallery .family{
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+#check2:checked ~ .container .photo-gallery .child,
+#check2:checked ~ .container .photo-gallery .place{
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+}
+
+
